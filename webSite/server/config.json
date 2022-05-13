@@ -1,0 +1,15 @@
+{
+ "website": {
+  "port": "8080",
+  "callback": "https://monitor.azury.live/callback",
+  "domain": "https://monitor.azury.live"
+ },
+
+ "client": {
+  "client_id": "967573793637810268",
+  "client_secret": ""
+ },
+ "server": {
+  "id": ""
+ }
+}

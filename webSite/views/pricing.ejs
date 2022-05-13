@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+<%- include("./include/nav") %>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <link rel="stylesheet" href="css/buy.css">
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/905678655802441798/919239069190479872/logo_antialias_v2.png">
+    <script src="https://www.paypal.com/sdk/js?client-id=<%= paypalClientId %>"></script>
+    <script src="js/paypal.js" defer></script>
+    <script src="https://kit.fontawesome.com/ea44828f28.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="table basic">
+      <div class="price-section">
+        <div class="price-area">
+          <div class="inner-area">
+            <span class="text">⌀</span>
+            <span class="price">5</span>
+          </div>
+        </div>
+      </div>
+      <div class="package-name"></div>
+      <ul class="features">
+        <li>
+          <span class="list-name">Discord Bot Maker Access</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">100% Working Discord Bots</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Source Code Of Our Bots</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Lifetime Discord Bot Updates</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+      </ul>
+      <div class="btn"><button id="Basic">1x Nitro Cl</button></div>
+    </div>
+    <div class="table premium">
+      <div class="ribbon"><span>Recommend</span></div>
+      <div class="price-section">
+        <div class="price-area">
+          <div class="inner-area">
+            <span class="text">⌀</span>
+            <span class="price">10</span>
+          </div>
+        </div>
+      </div>
+      <div class="package-name"></div>
+      <ul class="features">
+        <li>
+          <span class="list-name">Discord Bot Maker Access</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">100% Working Discord Bots</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Source Code Of Our Bots</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Lifetime Discord Bot Updates</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+      </ul>
+      <div class="btn"><button id="Premium">1x Nitro</button></div>
+    </div>
+    <div class="table ultimate">
+      <div class="price-section">
+        <div class="price-area">
+          <div class="inner-area">
+            <span class="text">⌀</span>
+            <span class="price">20</span>
+          </div>
+        </div>
+      </div>
+      <div class="package-name"></div>
+      <ul class="features">
+        <li>
+          <span class="list-name">Bot Maker Access</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">100% Working Discord Bots</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Source Code Of Our Bots</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Lifetime Discord Bot Updates</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+      </ul>
+      <div class="btn"><button id="Ultimate">2x Nitro</button></div>
+    </div>
+    <div class="popup">
+     <span id="popupclose"><i class="fas fa-times"></i></span>
+      <div id="paypal"></div>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+<%- include("./include/footer") %>
+</body>
+</html>

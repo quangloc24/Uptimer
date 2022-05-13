@@ -1,0 +1,34 @@
+{
+  
+  "mongooseConnectionString": "mongodb+srv://notsakshya:notsakshya@cluster0.kms47.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "prefix": "!",
+  "activity": "/help 📥 Monitoring Urls | On {shards} Cluster(s)",
+  "status": "online",
+  "disable_fetching": true,
+  
+  "developers": ["966411522106605608", "729554449844011130"],
+
+  "api": {
+    "callbackLink": "https://monitor.azury.live/callback",
+    "websiteLink": "https://monitor.azury.live",
+    "sitePORT": "8080",
+    "botID": "967573793637810268",
+    "botSECRET": "0b-Q-bFDxr-CoGISA3RoB011ZtHSsNXA"
+  },
+  
+
+  "color": {
+    "main"   : "#ff3c00",
+    "error"  : "#ff5f8e",
+    "success": "#99ff9c",
+
+    "red"   : "#ff5a48",
+    "orange": "#ffca4d",
+    "yellow": "#ffcc5c",
+    "green" : "#74ff89",
+    "purple": "#7d5eff",
+    "pink"  : "#ff88d2",
+    "grey"  : "#4b4b4b",
+    "white" : "#ffffff"
+  }
+}

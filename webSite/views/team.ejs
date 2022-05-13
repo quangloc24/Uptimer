@@ -1,0 +1,75 @@
+<%- include('header'); -%>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        
+        <title>
+            BackupBot | Dashboard
+        </title>
+    </head>
+
+
+    <!--HEADER-->
+    <!--MAIN BODY-->
+    <div class="p-5 lg:p-10 py-[10rem] 10px lg:py-[6rem] rounded-lg min-h-screen" style="margin: 10px">
+        
+            <div class="w-full text-center flex justify-center my-10 flex-col items-center" style="margin: 10px">
+                <br><br><br>
+                <h1 style="font-weight: 900;">
+                    <span style="font-size: 40px;"><span style="color:#6861fe;">
+                            <%= botClient.user.username %>
+                        </span></span>
+                </h1>
+                <p style="font-style: italic;font-size: 30px;"><span style="color:white;">This is the Dashboard of Best Uptimer bot! Uptime your codes %87 uptime!</span>
+                    <br>
+                    <br>
+                    <span style="color:white"> <i class="fa-solid fa-wifi"></i> </span><span style="color:white">Ping:</span><span id="ping" style="color: #FEE75C">
+                         <b><%= botClient.ws.ping %>ms</b> 
+                    </span><br><br>
+                    
+                </p><br><br>
+              
+            </div>
+        </div>
+        </div>
+    <hr style="width: 75%;background-color: #FFFFFF!important;color: #FFFFFF!important;border: 5px solid #FFFFFF!important;border-radius:25px;margin-left: 10%;"><br>
+      <div class="p-5 lg:p-10 py-[10rem] 10px lg:py-[6rem] rounded-lg min-h-screen" style="margin: -40px">
+        <div class="w-full text-center flex justify-center flex-col items-center" style="margin: 100px">
+            <div class="w-full text-center flex justify-center my-10 flex-col items-center" style="margin: 6px">
+<h1 style="font-weight: 900;">
+                    <span style="font-size: 40px;"><span style="color:#6861fe;">
+                            The Azury Team:
+                        </span></span>
+                </h1>
+<div></div><div class="grid">
+
+<% team.map((t) => {%>
+<div class="form-body">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+<div class="whatheis"><%= t.whatheis %></div>
+<img src="img/team/<%= t.avatar %>"/>
+</div>
+<div class="card-body">
+<h3><%= t.name %></h3>
+<p><%= t.description %></p>
+<br></div><br></div>
+<% }) %>
+</div>
+
+</body>
+</html>
+
+  

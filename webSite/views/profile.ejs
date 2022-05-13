@@ -1,0 +1,171 @@
+<%- include('header'); -%>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        
+        <title>
+            Monitor | User-Profile
+        </title>
+    </head>
+
+
+    <!--HEADER-->
+    <!--MAIN BODY-->
+    <div class="p-5 lg:p-10 py-[10rem] 10px lg:py-[6rem] rounded-lg min-h-screen" style="margin: 10px">
+        
+            <div class="w-full text-center flex justify-center my-10 flex-col items-center" style="margin: 10px">
+                <br><br><br>
+                <h1 style="font-weight: 900;">
+                    <span style="font-size: 40px;"><span style="color:#6861fe;">
+                            <%= botClient.user.username %>
+                        </span></span>
+                </h1>
+                <p style="font-style: italic;font-size: 30px;"><span style="color:white;">Here is your user-Profile.</span>
+                  <a style="font-size: 15px;"
+                      href="/" 
+                      class="mt-auto btn btn-sm btn-primary">Return Home</a>
+                  <br>
+                  
+                  <div class="column is-2">
+                    <br><br><br>
+            <img draggable="false" src="<%= member.displayAvatarURL({dynamic: true}) %>" style="width: 200px; border-radius: 50%;">
+        </div>
+        <div class="column is-6">
+            <br>
+            <p translate="no" class="has-text-white is-size-5" style="margin-bottom: 10px; font-size: 40px;"><%= user.username %><span class="is-size-4" style="opacity: 0.2;" style="font-size: 30px;">#<%= user.discriminator %></span></p>
+           <div class="user-badges">
+                <% if(member.flags) {%>
+                <%
+                            member.flags.toArray().forEach(flag =>{
+                                if (flag === "HOUSE_BALANCE") { %>
+                                    <span data-tooltip="Hypesquad Balance"
+                                    data-tooltip-location="left">
+                                    <img draggable="false" src="https://emoji.gg/assets/emoji/balance.png" data-tooltip="Hypesquad Balance" class="mr-1" data-tippy-content="Hypesquad Balance" width="32px">
+                                </span>
+                                    <% }
+                
+                               if (flag === "HOUSE_BRILLIANCE") { %>
+                                <span data-tooltip="Hypesquad Brilliance"
+                                    data-tooltip-location="left">
+                               <img draggable="false" src="https://emoji.gg/assets/emoji/4790-hypesquadbrilliance.png" class="mr-1" data-tippy-content="HypeSquad Brilliance" width="32px">
+                               </span>
+                               <% }
+                
+                               if (flag === "HOUSE_BRAVERY") { %>
+                                <span data-tooltip="Hypesquad Bravery"
+                                    data-tooltip-location="left">
+                               <img draggable="false" src="https://emoji.gg/assets/emoji/bravery.png" class=" mr-1" data-tippy-content="HypeSquad Bravery" width="32px">
+                          </span>
+                               <% }
+                               
+                               if (flag === "VERIFIED_DEVELOPER") { %>
+                                <span data-tooltip="Verified Developer"
+                                    data-tooltip-location="left">
+                               <img draggable="false" src="https://emoji.gg/assets/emoji/4323-blurple-verified-bot-developer.png" class=" mr-1" data-tippy-content="Early Verified Developer" width="32px">
+                               </span>
+                               <% }
+                               
+                               if (flag === "EARLY_SUPPORTER") { %>
+                                <span data-tooltip="Early Supporter"
+                                    data-tooltip-location="left">
+                               <img draggable="false" src="https://emoji.gg/assets/emoji/3121-discord-earlysupporter.png" class=" mr-1" data-tippy-content="Early Supporter" width="32px">
+                               </span>
+                               <% }
+                            })
+                            %>
+                            <% } %>
+                          <% let av = member.displayAvatarURL({dynamic: true}) %>
+                          <% if(av.endsWith('.gif')) {%>
+                            <span data-tooltip="Nitro Subscriber"
+                                    data-tooltip-location="left">
+                            <img draggable="false" src="https://emoji.gg/assets/emoji/2937-discord-nitro.png" class="mr-1" data-tippy-content="Nitro Subscriber" width="32px">
+                            </span>
+                            <% } %>      
+             </div>
+            <br>
+                              
+                              <a href="/monitor" style="float: right;" class="btn btn-primary has-text-white mb-3">Add Link</a>
+<table id="tableData" class="table table-dark table-striped" data-toggle="table" data-pagination="true" data-search="true">
+  <thead>
+  <th>Uptime Link</th>
+  <th>Operation</th>
+  </thead>
+          <% uptimes.map(a => {%>
+            <tr>
+                <td><%= a.link %></td>
+              <td><a onclick='deletequest("<%= a.code %>")' class="btn btn-danger">Delete</a></td>
+            </tr>
+         <% }); %>
+</table>
+        </div>
+  </div>
+                  <br><br>
+                    <center><a href="/logout"<button class="text-white bg-red-600/20 hover:bg-red-600/30 px-8 py-4 rounded-md shadow-xl transition-all duration-150"><font size="4"><b>Logout from Dashboard</b></font></button></a></center> 
+            </div>
+        </div>
+
+        
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success') && urlParams.get('success')) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    showCloseButton: true,
+                    text: urlParams.get('message'),
+                    footer: 'Copyright 2022 &copy Azury Development - All right reserved.'
+                }).then((result) => {
+                    window.location.href = `/`;
+                })
+            }
+            if (urlParams.has('error') && urlParams.get('error')) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'An Error occurred!',
+                    text: urlParams.get('message'),
+                    showCloseButton: true,
+                    footer: 'Copyright 2022 &copy Azury Development - All right reserved.'
+                }).then((result) => {
+                    window.location.href = `/`;
+                })
+            }
+          function deletequest(uptimecode) {
+Swal.fire({
+  title: 'Are you sure?',
+  text: "Are you sure you want to permanently delete the link you selected?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel it!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = '/monitor/'+uptimecode+'/delete';
+  } else {
+    Swal.fire(
+      'Canceled..',
+      'Link deletion from the uptime system has been canceled.',
+      'error'
+    )
+  }
+})
+}
+        </script>
+        <!--JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+        </body>
+
+    </html>

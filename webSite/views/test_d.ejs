@@ -1,0 +1,74 @@
+<%- include('header'); -%>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        
+        <title>
+            BackupBot | 
+        </title>
+    </head>
+
+
+    <!--HEADER-->
+    <!--MAIN BODY-->
+    <div class="p-5 lg:p-10 py-[10rem] 10px lg:py-[6rem] rounded-lg min-h-screen" style="margin: 10px">
+        <div class="w-full text-center flex justify-center flex-col items-center" style="margin: 100px">
+            <div class="w-full text-center flex justify-center my-10 flex-col items-center" style="margin: 10px">
+                
+                <h1 style="font-weight: 900;">
+                    <span style="font-size: 40px;"><span style="color:#6861fe;">
+                            <%= botClient.user.username %>
+                        </span></span>
+                </h1>
+                <p style="font-style: italic;font-size: 30px;"><span style="color:white;">Manage </span>
+                    <br>
+                    <br>
+                    <div class="form-body">
+                
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <p><b><font size="5"><font color="red">Click the Button below to make <i>a NEW</i> Backup</font></b></p></font>
+    <form action="/create-backup" method="POST" onsubmit="return onSubmit(this)">
+    
+                               <center><button class="text-white bg-green-600/20 hover:bg-green-600/30 px-8 py-4 rounded-md shadow-xl transition-all duration-150"><font size="5">Create a new Backup</font></button></center> 
+                            </form>
+                </p>
+                <br>
+            </div>
+        </div>
+        <section>
+<br>
+
+      </section></center>
+<script>
+function onSubmit(e) {
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#28a745',
+  cancelButtonColor: '#dc3545',
+  confirmButtonText: 'Yes, Create It'
+}).then((result) => {
+  if (result.isConfirmed) {
+  e.submit()
+  }
+})
+return false;
+}
+</script>
+<br><br><br><br>
+</body>

@@ -1,0 +1,133 @@
+<%- include('header'); -%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/sweetalert.css">
+        
+        <title>
+            Azury Manager | Dashboard
+        </title>
+    </head>  
+
+        
+    <script>
+        $(window).bind('beforeunload', function(){
+            return 'Are you sure you want to leave?';
+        });
+        </script>
+ 
+
+
+    <body>
+        <!--MAIN BODY-->
+        <section>
+<br>
+            <br>
+            <div class="form-body">
+                
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <p><b><font size="5"><font color="red">Make sure, to enable <i>ALL Intents</i> in the Developer Portal</font></b></p></font>
+    <form action="/create-bot" method="POST" onsubmit="return onSubmit(this)">
+    <div class="bot-details">
+    <h5 style="margin-bottom: 0.5rem; margin-top: 10px;color:#6861fe"><b><font size="4">BOT ID</font></b</h5>
+                                    <p style="font-style: italic;" class="disabled">The Id of the BOT.</p>
+    <input type="number" placeholder="Your Bot ID" name="id" id="id" required="true"></input>
+    </div>
+    <h5 style="margin-bottom: 0.5rem; margin-top: 10px;color:#6861fe"><b><font size="4">Token</font></b</h5>
+                                    <p style="font-style: italic;" class="disabled">The Token of the Bot, you are creating</p>
+    <input class="token" type="password" placeholder="Your Bot Token" name="token" id="token" required></input>
+    <br>
+    <div class="info-input">
+    <span class="detail"><b>Bot Name </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Max 15 chars</span></span>
+    <input type="text" placeholder="Your Bot Name" name="name" id="name" required></input>
+    </div>
+    <div class="info-input">
+    <span class="detail"><b>Deploy Prefix </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Prefix for deploying SlashCommands</span></span>
+    <input type="text" placeholder="Example: !" name="prefix" id="prefix" required></input>
+    </div>
+    <div class="info-input">
+    <span class="detail"><b>Your ID ( Bot Creator ) </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Discord Snowflake ❄️</span></span>
+    <input type="text" value="<%= user.id %>" placeholder="Your Discord ID" name="botmakerid" id="botmakerid" required></input>
+    </div>
+    <div class="info-input">
+    <span class="detail"><b>Customer's ID ( Owner ID ) </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Discord Snowflake ❄️</span></span>
+    <input type="number" placeholder="Customer Discord ID" name="owner_id" id="owner_id" required></input>
+    </div>
+    <div class="info-input">
+    <span class="detail"><b>Bot Type </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Ticket Bot, Chat Bot, ect.</span></span>
+     
+    <select name="type" id="type">
+        <% config.bot.type.map(t => {%>
+            <option value="<%= t %>"><%= t %></option>
+        <% }); %>
+    </select> 
+          
+    </div>
+                  <div class="info-input">
+    <span class="detail"><b>Activity Text </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">String, Max 20 chars</span></span>
+    <input type="text" placeholder="Activity text" name="activity_status" id="activity_status" required></input>
+     </div>
+    <div class="info-input">
+        <span class="detail"><b>Activity Type </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Dnd, Online, Idle</span></span>
+         
+        <select name="activity_type" id="activitytypes">
+            <% config.bot.statustype.map(t => {%>
+            <option value="<%= t %>"><%= t %></option>
+            <% }); %>
+        </select>
+              </div>
+        <div class="info-input">
+        <span class="detail"><b>File Name </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">The File Name Where Bot Is Stored At</span></span>
+        <input type="text" placeholder="ticket_bot" name="filename" id="filename" required value="<%= Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) %>"></input>
+    </div>
+    <div class="info-input">
+        <span class="detail"><b>Ticket Channel </b><span style="color: rgb(175, 22, 22)">*</span><span class="tips">Buyer Ticket Channel</span></span>
+        
+        <select name="ticket" id="ticketchannels">
+        <% channels.map(ch => {%>
+        <option value="#<%= ch.name %>">#<%= ch.name %></option>
+        <br>
+        <% }); %>
+        </select>
+    </div>
+   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    </div><br><br>
+    <div class="button">
+    <button type="submit">SUBMIT CREATION</button>
+ </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+function onSubmit(e) {
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#28a745',
+  cancelButtonColor: '#dc3545',
+  confirmButtonText: 'Yes, Create It'
+}).then((result) => {
+  if (result.isConfirmed) {
+  e.submit()
+  }
+})
+return false;
+}
+</script>
+<br><br><br><br>
+</body>
